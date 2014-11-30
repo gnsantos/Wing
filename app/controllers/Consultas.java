@@ -35,7 +35,7 @@ public class Consultas {
                 + "				<th>Nome</th>"
                 + "				<th>Linguagem</th>"
                 + "				<th>Descrição</th>"
-                + "				<th>Palavras-chave</th>"
+                + "				<th>Nota</th>"
                 + "				<th>Submetido por</th>"
                 + "			</tr>"
                 + "		</thead>"
@@ -45,19 +45,22 @@ public class Consultas {
             resultado +=
                     "	<tr>"
                             + "	<td>" + source.name + "</td>";
-            if (source.info != null)
+            if (source.descriptionID != 0)
             {
-                resultado += "<td>" + source.info.language + "</td>";
-                resultado += "<td>" + source.info.description + "</td>";
-                resultado += "<td>" + source.info.keywords + "</td>";
+                Description info = Description.finder.byId(source.descriptionID);
+                resultado += "<td>" + info.language + "</td>";
+                resultado += "<td>" + info.description + "</td>";
+                //resultado += "<td>" + info.keywords + "</td>";
             }
             else {
                 resultado += "<td></td>";
             }
 
-            if (source.submitter != null)
+            resultado += "<td>" + source.nota() + "</td>";
+
+            if (source.submitterID != null)
             {
-                resultado += "<td>" + source.submitter+ "</td>";
+                resultado += "<td>" + source.submitterID + "</td>";
             }
             else
                 resultado += "<td></td>";

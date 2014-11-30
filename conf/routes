@@ -9,6 +9,8 @@ POST    /user                       controllers.Application.addUser()
 
 POST    /submit                     controllers.Application.addCode()
 
+POST    /comment                    controllers.Application.addRanking()
+
 GET     /codes                      controllers.Consultas.codes()
 
 # Map static resources from the /public folder to the /assets URL path

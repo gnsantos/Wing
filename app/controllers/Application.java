@@ -40,17 +40,23 @@ public class Application extends Controller {
 
         System.out.print(source.getName());
 
-        List<String> kws = new LinkedList<String>();
-        kws.add(submission.kw[0]); kws.add(submission.kw[1]); kws.add(submission.kw[2]);
+        Description description = new Description(submission.hashCode(), submission.description, submission.language);
+        description.save();
 
-        List<Ranking> ranks = new LinkedList<Ranking>();
-
-        Description description = new Description(submission.description, submission.language, kws);
-
-        Code code = new Code(source.getName(), source, description, submitter.username, ranks);
+        Code code = new Code(/*submitter.hashCode(),*/ source.getName(), source, description.id, submission.submitter);
 
         code.save();
 
+        return redirect(routes.Application.index());
+    }
+
+    public static Result addRanking(){
+        RankingSubmission rank = Form.form(RankingSubmission.class).bindFromRequest().get();
+        Code code = Code.findByName.byId(rank.codename);
+        boolean like = false;
+        if(rank.like.equals("like")) like = true;
+        Ranking ranking = new Ranking(rank.hashCode(),code.name,like,rank.comment);
+        ranking.save();
         return redirect(routes.Application.index());
     }
 

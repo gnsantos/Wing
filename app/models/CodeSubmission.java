@@ -11,6 +11,6 @@ public class CodeSubmission {
     public File file;
     public String language;
     public String description;
-    public String[] kw = new String[3];
+   // public String[] kw = new String[3];
     public String submitter;
 }

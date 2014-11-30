@@ -16,27 +16,36 @@ import java.util.List;
 @Table(name = "Code")
 public class Code extends Model {
 
+    /*@Id
+    public Integer id;
+    */
     @Id
-    public int id;
-
     public String name;
+
     public File source;
-    public Description info;
-    public String submitter;
-    public List<Ranking> ranks;
+    public int descriptionID;
+    public String submitterID;
     public static Model.Finder<String, Code> findByName = new Model.Finder<String , Code>(String.class, Code.class);
 
-    public Code(String name, File source, Description description, String submitter, List<Ranking> ranks){
+    public Code(/*Integer id,*/ String name, File source, int descriptionID, String submitter){
         this.name = name;
         this.source = source;
-        this.info = description;
-        this.submitter = submitter;
-        this.ranks = ranks;
+        this.descriptionID = descriptionID;
+        this.submitterID = submitter;
+        /*this.id = id;*/
     }
 
-    public void addRanking(boolean like, String comment){
-        Ranking r = new Ranking(like, comment);
-        ranks.add(r);
+
+    public int nota(){
+        List<Ranking> opinioes = Ranking.finder.all();
+        int nota = 0;
+        for(Ranking r : opinioes){
+            if(r.codeID.equals(this.name)){
+                if(r.likes_code) nota++;
+                else nota--;
+            }
+        }
+        return  nota;
     }
 
 }

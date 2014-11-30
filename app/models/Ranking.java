@@ -1,14 +1,32 @@
 package models;
 
+import play.db.ebean.Model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by gervasiosantos on 27/11/14.
  */
-public class Ranking {
-    public boolean like;
-    public String comment;
 
-    public Ranking(boolean like, String comment){
-        this.like = like;
+@Entity
+@Table(name = "Ranking")
+public class Ranking extends Model{
+
+    @Id
+    public Integer id;
+
+    public String codeID;
+    public boolean likes_code;
+    public String comment;
+    public static Model.Finder<Integer, Ranking> finder = new Model.Finder<Integer, Ranking>(Integer.class, Ranking.class);
+
+
+    public Ranking(Integer id, String codeID, boolean like, String comment){
+        this.id = id;
+        this.likes_code = like;
         this.comment = comment;
+        this.codeID = codeID;
     }
 }

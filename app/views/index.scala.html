@@ -27,12 +27,24 @@
     <label for="inputuser">Submitter:</label>
     <input id = "inputuser" type="text" name="submitter" placeholder="Enter your username"/>
     <br/>
-    <label for="inputkeywords">Keywords:</label>
-    <input id = "inputkeywords" type="text" name="kw[0]" placeholder="Type keyword"/>
-    <input type="text" name="kw[1]" placeholder="Type keyword"/>
-    <input type="text" name="kw[2]" placeholder="Type keyword"/>
-    <br/>
     <button>Add Code</button>
+</form>
+
+<form action="@routes.Application.addRanking()" method="post">
+    <label for="codename">Code name:</label>
+    <input id="codename" type="text" name="codename" placeholder="Type code's name">
+    <br/>
+    <label for="opinion_good">Like</label>
+    <input id="opinion_good" type="radio" value="like" name="like">
+    <label for="opinion_bad">Deslike</label>
+    <input id="opinion_bad" type="radio" value="deslike" name="like">
+    <br/>
+    <label for="comment">Comment:</label>
+    <br/>
+    <textarea id = "comment" type="text" name="comment" rows="6" cols="30" maxlength="2000"/>
+    </textarea>
+    <br/>
+    <button>Comment</button>
 </form>
 
 }

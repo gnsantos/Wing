@@ -22,18 +22,10 @@ public class User extends Model {
 
     public String email;
     public static Finder<String, User> find = new Finder<String , User>(String.class, User.class);
-    public List<Code> codes;
 
-    public User(String username, String email, List<Code> codes){
+    public User(String username, String email){
         this.username = username;
         this.email = email;
-        this.codes = codes;
-    }
-
-    public void  addCode(String name, File source, Description info){
-        List<Ranking> ranks = new LinkedList<Ranking>();
-        Code code = new Code(name, source, info, this.username, ranks);
-        codes.add(code);
     }
 
 }
