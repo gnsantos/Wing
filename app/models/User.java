@@ -32,7 +32,8 @@ public class User extends Model {
 
     public void  addCode(String name, File source, Description info){
         List<Ranking> ranks = new LinkedList<Ranking>();
-        Code code = new Code(name, source, info, this, ranks);
+        Code code = new Code(name, source, info, this.username, ranks);
+        codes.add(code);
     }
 
 }

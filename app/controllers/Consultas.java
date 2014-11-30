@@ -57,7 +57,7 @@ public class Consultas {
 
             if (source.submitter != null)
             {
-                resultado += "<td>" + source.submitter.username + "</td>";
+                resultado += "<td>" + source.submitter+ "</td>";
             }
             else
                 resultado += "<td></td>";

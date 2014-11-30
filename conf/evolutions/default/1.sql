@@ -6,6 +6,7 @@
 create table Code (
   id                        integer not null,
   name                      varchar(255),
+  submitter                 varchar(255),
   constraint pk_Code primary key (id))
 ;
 

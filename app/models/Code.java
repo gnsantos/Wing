@@ -22,11 +22,11 @@ public class Code extends Model {
     public String name;
     public File source;
     public Description info;
-    public User submitter;
+    public String submitter;
     public List<Ranking> ranks;
     public static Model.Finder<String, Code> findByName = new Model.Finder<String , Code>(String.class, Code.class);
 
-    public Code(String name, File source, Description description, User submitter, List<Ranking> ranks){
+    public Code(String name, File source, Description description, String submitter, List<Ranking> ranks){
         this.name = name;
         this.source = source;
         this.info = description;

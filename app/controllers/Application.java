@@ -47,7 +47,7 @@ public class Application extends Controller {
 
         Description description = new Description(submission.description, submission.language, kws);
 
-        Code code = new Code(source.getName(), source, description, submitter, ranks);
+        Code code = new Code(source.getName(), source, description, submitter.username, ranks);
 
         code.save();
 
