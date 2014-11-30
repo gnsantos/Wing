@@ -6,10 +6,12 @@ package models;
 
 import play.db.ebean.Model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.File;
+import java.sql.Blob;
 import java.util.List;
 
 @Entity

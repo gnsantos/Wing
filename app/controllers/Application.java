@@ -7,6 +7,8 @@ import play.mvc.*;
 import play.db.ebean.Model;
 import views.html.*;
 
+import java.sql.*;
+
 import java.io.File;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -39,12 +41,12 @@ public class Application extends Controller {
         File source = submission.file;
 
         System.out.print(source.getName());
+        System.out.print(source.getAbsolutePath());
 
         Description description = new Description(submission.hashCode(), submission.description, submission.language);
         description.save();
 
         Code code = new Code(/*submitter.hashCode(),*/ source.getName(), source, description.id, submission.submitter);
-
         code.save();
 
         return redirect(routes.Application.index());
