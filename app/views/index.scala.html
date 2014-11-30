@@ -1,0 +1,38 @@
+@(message: String)
+
+@main("Welcome to WING!") {
+
+<form action="@routes.Application.addUser()" method="post" xmlns="http://www.w3.org/1999/html">
+    <label for="inputusername">Username:</label>
+    <input id = "inputusername" type="text" name="username" placeholder="Type username here" />
+    <br/>
+    <label for="inputemail">Email:</label>
+    <input id="inputemail" type="email" name="email" placeholder="Type email here"/>
+    <br/>
+    <button>Add User</button>
+</form>
+
+<form action="@routes.Application.addCode()" method="post">
+    <label for="inputfile">File:</label>
+    <input id="inputfile" type="file" name="file">
+    <br/>
+    <label for="inputlang">Language:</label>
+    <input id = "inputlang" type="text" name="language" placeholder="Type PL"/>
+    <br/>
+    <label for="description">Description:</label>
+    <br/>
+    <textarea id = "description" type="text" name="description" rows="6" cols="30" maxlength="2000"/>
+    </textarea>
+    <br/>
+    <label for="inputuser">Submitter:</label>
+    <input id = "inputuser" type="text" name="submitter" placeholder="Enter your username"/>
+    <br/>
+    <label for="inputkeywords">Keywords:</label>
+    <input id = "inputkeywords" type="text" name="kw[0]" placeholder="Type keyword"/>
+    <input type="text" name="kw[1]" placeholder="Type keyword"/>
+    <input type="text" name="kw[2]" placeholder="Type keyword"/>
+    <br/>
+    <button>Add Code</button>
+</form>
+
+}
