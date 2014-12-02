@@ -46,7 +46,7 @@ public class Application extends Controller {
         Description description = new Description(submission.hashCode(), submission.description, submission.language);
         description.save();
 
-        Code code = new Code(/*submitter.hashCode(),*/ source.getName(), source, description.id, submission.submitter);
+        Code code = new Code(source.getName(), source, description.id, submission.submitter);
         code.save();
 
         return redirect(routes.Application.index());
