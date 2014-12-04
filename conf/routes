@@ -5,13 +5,22 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+GET     /signup                     controllers.Application.signUp()
+
+GET     /comments                   controllers.Application.comments()
+
+GET     /submissions                controllers.Application.submissions()
+
+GET     /codes                      controllers.Consultas.getAllCodes()
+
+POST    /search                     controllers.Consultas.searchCodesByDescription()
+
 POST    /user                       controllers.Application.addUser()
 
 POST    /submit                     controllers.Application.addCode()
 
 POST    /comment                    controllers.Application.addRanking()
 
-GET     /codes                      controllers.Consultas.getAllCodes()
 
 
 # Map static resources from the /public folder to the /assets URL path

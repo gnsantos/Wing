@@ -1,0 +1,21 @@
+@main("Comment a Code!"){
+    <div>
+        <h2>Comments</h2>
+        <form action="@routes.Application.addRanking()" method="post">
+            <label for="codename">Code name:</label>
+            <input id="codename" type="text" name="codename" placeholder="Type code's name" required>
+            <br/>
+            <label for="opinion_good">Like</label>
+            <input id="opinion_good" type="radio" value="like" name="like">
+            <label for="opinion_bad">Deslike</label>
+            <input id="opinion_bad" type="radio" value="deslike" name="like" checked>
+            <br/>
+            <label for="comment">Comment:</label>
+            <br/>
+            <textarea id = "comment" type="text" name="comment" rows="6" cols="30" maxlength="2000"/>
+            </textarea>
+            <br/>
+            <button>Comment</button>
+        </form>
+    </div>
+}

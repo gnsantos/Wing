@@ -21,12 +21,16 @@ public class User extends Model {
     public String username;
 
     public String email;
-    private String password;
+    public String password;
     public static Finder<String, User> find = new Finder<String , User>(String.class, User.class);
 
     public User(String username, String email){
         this.username = username;
         this.email = email;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
 }

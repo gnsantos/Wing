@@ -24,6 +24,19 @@ public class Application extends Controller {
         return ok(index.render("Insert users and code."));
     }
 
+    public static Result signUp() {
+        return ok(signup.render());
+    }
+
+    public static Result submissions() {
+        return ok(submission.render());
+    }
+
+    public static Result comments() {
+        return ok(comments.render());
+    }
+
+
     public static Result addUser() {
         User user = Form.form(User.class).bindFromRequest().get();
 
@@ -44,6 +57,10 @@ public class Application extends Controller {
 
         if (submitter == null){
             return ok(index.render("AddCodeError"));
+        }
+        else if(!submission.password.equals(submitter.getPassword())){
+            System.err.println(submitter.getPassword() + " + " + submission.password);
+            return ok(index.render("WrongPassword"));
         }
 
         File source = submission.file;
