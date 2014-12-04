@@ -1,6 +1,7 @@
 @(message: String)
 
 @main("Welcome to WING!") {
+
 <div>
     <h1>WING is Not Github</h1>
     <div >
@@ -16,6 +17,11 @@
                 <input id="inputemail" type="email" name="email" placeholder="Type email here" required/>
             </div>
 
+            <div>
+                <label for="inputpassword">Password:</label>
+                <input id="inputpassword" type="password" name="password" placeholder="Password" required="">
+            </div>
+
             <button>Add User</button>
         </form>
     </div>
@@ -24,20 +30,20 @@
         <h2>Code Submission</h2>
         <form action="@routes.Application.addCode()" method="post">
             <label for="inputfile">File:</label>
-            <input id="inputfile" type="file" name="file" required>
+            <input id="inputfile" class="form-control" type="file" name="file" required>
             <br/>
             <label for="inputlang">Language:</label>
-            <input id = "inputlang" type="text" name="language" placeholder="Type PL" required/>
+            <input id = "inputlang" class="form-control" type="text" name="language" placeholder="Type PL" required/>
             <br/>
             <label for="description">Description:</label>
             <br/>
-            <textarea id = "description" type="text" name="description" rows="6" cols="30" maxlength="2000" required/>
+            <textarea id = "description" class="form-control" type="text" name="description" rows="6" cols="30" maxlength="2000" required/>
             </textarea>
             <br/>
             <label for="inputuser">Submitter:</label>
-            <input id = "inputuser" type="text" name="submitter" placeholder="Enter your username" required/>
+            <input id = "inputuser" class="form-control" type="text" name="submitter" placeholder="Enter your username" required/>
             <br/>
-            <button>Add Code</button>
+            <button type="submit" class="btn btn-default" onclick="onadd()" >Add Code</button>
         </form>
     </div>
 
@@ -65,10 +71,13 @@
         <h2>Search</h2>
         <button id="buttonallcodes">See All Codes!</button>
         <script type="text/javascript">
-     document.getElementById("buttonallcodes").onclick = function(){
+        document.getElementById("buttonallcodes").onclick = function(){
         location.href = "@routes.Consultas.getAllCodes()";
      }
  </script>
     </div>
 </div>
+
+@popup(message)
+
 }

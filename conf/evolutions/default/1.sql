@@ -29,6 +29,7 @@ create table Ranking (
 create table User (
   username                  varchar(255) not null,
   email                     varchar(255),
+  password                  varchar(255),
   constraint pk_User primary key (username))
 ;
 

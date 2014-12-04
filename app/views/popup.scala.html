@@ -1,0 +1,14 @@
+@(message: String)
+
+@if(message == "AddCodeError"){
+<script> alert("User entered as submitter does not exist!");</script>
+}
+
+@if(message == "AddUserError"){
+<script> alert("Username already exists!"); </script>
+}
+
+@if(message == "AddCommentError"){
+<script> alert("Trying to add comment for non-existing code!") </script>
+}
+

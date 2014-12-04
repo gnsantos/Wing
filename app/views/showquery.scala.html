@@ -33,7 +33,7 @@
 
             <td>@source.nota</td>
 
-            @if(source.submitterID != null){
+            @if(source.getSubmitter() != null){
             <td>@source.getSubmitter().username</td>
             }
         </tr>

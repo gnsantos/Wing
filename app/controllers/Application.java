@@ -13,6 +13,7 @@ import java.io.File;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.Thread;
 
 import play.api.libs.json.*;
 
@@ -25,11 +26,14 @@ public class Application extends Controller {
 
     public static Result addUser() {
         User user = Form.form(User.class).bindFromRequest().get();
-        try {
-            user.save();
-        }catch (Exception e){
-            return ok(index.render("Invalid username."));
+
+        User checkIfExists = User.find.byId(user.username);
+
+        if(checkIfExists != null){
+            return ok(index.render("AddUserError"));
         }
+
+        user.save();
         return redirect(routes.Application.index());
     }
 
@@ -37,6 +41,10 @@ public class Application extends Controller {
         CodeSubmission submission = Form.form(CodeSubmission.class).bindFromRequest().get();
 
         User submitter = User.find.byId(submission.submitter);
+
+        if (submitter == null){
+            return ok(index.render("AddCodeError"));
+        }
 
         File source = submission.file;
 
@@ -55,6 +63,9 @@ public class Application extends Controller {
     public static Result addRanking(){
         RankingSubmission rank = Form.form(RankingSubmission.class).bindFromRequest().get();
         Code code = Code.findByName.byId(rank.codename);
+        if(code == null){
+            return ok(index.render("AddCommentError"));
+        }
         boolean like = false;
         if(rank.like.equals("like")) like = true;
         Ranking ranking = new Ranking(rank.hashCode(),code.name,like,rank.comment);
