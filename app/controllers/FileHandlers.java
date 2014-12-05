@@ -58,6 +58,7 @@ public class FileHandlers extends Controller {
 
     public static Result downloadFile(String filename){
         Code download = Code.findByName.byId(filename);
+        System.out.println("Quero baixar "+download);
         String filePath;
 
         if(download == null){
@@ -65,7 +66,7 @@ public class FileHandlers extends Controller {
         }
 
         try{
-            filePath = "/tmp" + download.name;
+            filePath = "/tmp/" + download.name;
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
             fileOutputStream.write(download.source);
         } catch(IOException e){

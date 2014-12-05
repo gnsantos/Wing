@@ -13,6 +13,10 @@ GET     /submissions                controllers.Redirect.submissions()
 
 GET     /codes                      controllers.Consultas.getAllCodes()
 
+GET     /codecomments               controllers.Consultas.getAllComments(codeName)
+
+GET     /download                   controllers.FileHandlers.downloadFile(filename)
+
 POST    /search                     controllers.Consultas.searchCodesByDescription()
 
 POST    /user                       controllers.UserAdder.addUser()

@@ -2,7 +2,7 @@
     <div class="overlay" style="display:none"></div>
     <div class="components-container" id="sub-container">
         <h1>Code Submission</h1>
-        <form action="@routes.FileHandlers.addCode()" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <form action="@routes.FileHandlers.addCode()" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="inputfile">File:</label>
                 <input id="inputfile" type="file" class="upload" name="file" required>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-default" id="OnAdd" >Add Code</button>
+                <button class="btn btn-default" id="OnAdd" >Submit</button>
             </div>
 
             <div style="display:none" id="confirm">

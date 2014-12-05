@@ -7,12 +7,12 @@ package controllers;
 import java.util.List;
 import java.util.LinkedList;
 
-
 import models.*;
 
 import play.mvc.Result;
 
 import views.html.showquery;
+import views.html.show_comments;
 
 import play.mvc.Controller;
 
@@ -44,8 +44,18 @@ public class Consultas extends Controller {
                 results.add(source);
             }
         }
-
         return ok(showquery.render(results));
+    }
+
+    public static Result getAllComments(String codeName){
+        Code code = Code.findByName.byId(codeName);
+        List<Ranking> rankings = Ranking.finder.all();
+        List<String> comments = new LinkedList<String>();
+        for(Ranking r : rankings){
+            if(r.codeID.equals(codeName))
+                comments.add(r.comment);
+        }
+        return ok(show_comments.render(comments, code));
     }
 
 }

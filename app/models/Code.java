@@ -16,12 +16,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "Code")
-public class Code extends Model {
+public class Code extends Model{
 
     @Id
     public String name;
 
-    @Column(columnDefinition = "VARBINARY(2000)")
+    @Column(columnDefinition = "VARBINARY(20000)")
     public byte[] source;
 
     public int descriptionID;
@@ -71,4 +71,12 @@ public class Code extends Model {
         return source;
     }
 
+
+    public int compareTo(Code c){
+        int score = this.nota();
+        int comparingScore = c.nota();
+        if(score > comparingScore) return 1;
+        else if(score < comparingScore) return -1;
+        return 0;
+    }
 }

@@ -5,7 +5,7 @@
 
 create table Code (
   name                      varchar(255) not null,
-  source                    VARBINARY(2000),
+  source                    VARBINARY(20000),
   description_id            integer,
   submitter_id              varchar(255),
   constraint pk_Code primary key (name))
