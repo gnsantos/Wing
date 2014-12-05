@@ -2,10 +2,15 @@
     <div class="overlay" style="display:none"></div>
     <div class="components-container" id="sub-container">
         <h1>Code Submission</h1>
-        <form action="@routes.Application.addCode()" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <form action="@routes.FileHandlers.addCode()" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="inputfile">File:</label>
                 <input id="inputfile" type="file" class="upload" name="file" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputfilename">Name:</label>
+                <input id="inputfilename" class="form-control" type="text" name="filename" placeholder="Type your program's name" required>
             </div>
 
             <div class="form-group">
@@ -22,7 +27,7 @@
             <div class="form-group">
                 <button class="btn btn-default" id="OnAdd" >Add Code</button>
             </div>
-            
+
             <div style="display:none" id="confirm">
                 <div class="wrapper" id="confirmation-wrapper">
                     <div class="form-group">

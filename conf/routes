@@ -5,21 +5,21 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-GET     /signup                     controllers.Application.signUp()
+GET     /signup                     controllers.Redirect.signUp()
 
-GET     /comments                   controllers.Application.comments()
+GET     /comments                   controllers.Redirect.comments()
 
-GET     /submissions                controllers.Application.submissions()
+GET     /submissions                controllers.Redirect.submissions()
 
 GET     /codes                      controllers.Consultas.getAllCodes()
 
 POST    /search                     controllers.Consultas.searchCodesByDescription()
 
-POST    /user                       controllers.Application.addUser()
+POST    /user                       controllers.UserAdder.addUser()
 
-POST    /submit                     controllers.Application.addCode()
+POST    /submit                     controllers.FileHandlers.addCode()
 
-POST    /comment                    controllers.Application.addRanking()
+POST    /comment                    controllers.CommentAdder.addRanking()
 
 
 
