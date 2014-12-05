@@ -1,0 +1,15 @@
+#brand {
+    background-color: #E1E1E1;
+    color:#222;
+}
+
+.navbar-brand {
+    border-radius:120px;
+}
+
+.navbar {
+    border-radius:120px;
+    height:20px;
+    width:85%;
+    margin-left: 7.5%;
+}
