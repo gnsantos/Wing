@@ -5,7 +5,7 @@
 
 create table Code (
   name                      varchar(255) not null,
-  source                    varbinary(255),
+  source                    VARBINARY(2000),
   description_id            integer,
   submitter_id              varchar(255),
   constraint pk_Code primary key (name))
@@ -13,7 +13,7 @@ create table Code (
 
 create table Description (
   id                        integer not null,
-  description               varchar(255),
+  description               TEXT,
   language                  varchar(255),
   constraint pk_Description primary key (id))
 ;
@@ -22,7 +22,7 @@ create table Ranking (
   id                        integer not null,
   code_id                   varchar(255),
   likes_code                boolean,
-  comment                   varchar(255),
+  comment                   TEXT,
   constraint pk_Ranking primary key (id))
 ;
 

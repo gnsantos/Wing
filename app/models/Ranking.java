@@ -2,6 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,6 +20,7 @@ public class Ranking extends Model{
 
     public String codeID;
     public boolean likes_code;
+    @Column(columnDefinition = "TEXT")
     public String comment;
     public static Model.Finder<Integer, Ranking> finder = new Model.Finder<Integer, Ranking>(Integer.class, Ranking.class);
 

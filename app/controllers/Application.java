@@ -1,22 +1,15 @@
 package controllers;
 
 import models.*;
-import play.*;
 import play.data.Form;
 import play.mvc.*;
-import play.db.ebean.Model;
+
+import sun.misc.IOUtils;
+
 import views.html.*;
 
-import java.sql.*;
-
 import java.io.File;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.lang.Thread;
-
-import play.api.libs.json.*;
-
+import java.io.IOException;
 
 public class Application extends Controller {
 
@@ -50,70 +43,43 @@ public class Application extends Controller {
         return redirect(routes.Application.index());
     }
 
-    public static Result addCode() {
-        CodeSubmission submission = Form.form(CodeSubmission.class).bindFromRequest().get();
+    public static Result addCode(){
+        Form<CodeSubmission> codeSubmissionForm = Form.form(CodeSubmission.class).bindFromRequest();
 
-        User submitter = User.find.byId(submission.submitter);
+        String submitterUsername = codeSubmissionForm.field("submitter").value();
+        String password = codeSubmissionForm.field("password").value();
+        String filename = codeSubmissionForm.field("filename").value();
+        String language = codeSubmissionForm.field("language").value();
+        String description = codeSubmissionForm.field("description").value();
+        File submittedFile;
 
-        if (submitter == null){
+        User submittingUser = User.find.byId(submitterUsername);
+
+        if(submittingUser == null){
             return ok(index.render("AddCodeError"));
-        }
-        else if(!submission.password.equals(submitter.getPassword())){
-            System.err.println(submitter.getPassword() + " + " + submission.password);
+        } else if(!password.equals(submittingUser.getPassword())){
             return ok(index.render("WrongPassword"));
         }
 
-        File source = submission.file;
+        Description info = new Description(codeSubmissionForm.hashCode(), description, language);
 
-        System.out.print(source.getName());
-        System.out.print(source.getAbsolutePath());
+        Http.MultipartFormData body = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart filePart = body.getFile("file");
 
-        Description description = new Description(submission.hashCode(), submission.description, submission.language);
-        description.save();
+        if(filePart != null){
+            submittedFile = filePart.getFile();
+        } else{
+            return ok(index.render("AddCommentError"));
+        }
 
-        Code code = new Code(null, source.getName(), description.id, submission.submitter);
+        Code code = new Code(submittedFile, filename, info.id, submitterUsername);
+        info.save();
         code.save();
 
         return redirect(routes.Application.index());
     }
 
 
-    /*public static Result addCode(){
-        Form<CodeSubmission> codeSubmissionForm = Form.form(CodeSubmission.class).bindFromRequest();
-
-        String submitterUsername = codeSubmissionForm.field("submitter").value();
-        String password = codeSubmissionForm.field("password").value();
-        String language = codeSubmissionForm.field("language").value();
-        String description = codeSubmissionForm.field("description").value();
-        File submittedFIle;
-        byte[] fileAsByteArray;
-
-        User submitingUser = User.find.byId(submitterUsername);
-
-        if(submitingUser == null){
-            return ok(index.render("AddCodeError"));
-        } else if(!password.equals(submitingUser.getPassword())){
-            return ok(index.render("WrongPassword"));
-        }
-
-        Description info = new Description(codeSubmissionForm.hashCode(), description, language);
-
-        MultipartFormData body = request().body().asMultipartFormData();
-        FilePart filePart = body.getFile("file");
-
-        if(filePart != null){
-            submittedFile = filePart.getFile();
-            try{
-                fileAsByteArray = Files.readAllBytes(submittedFile.toPath());
-            } catch (IOException e){
-                e.printStackTrace();
-            }
-        }
-
-        Code code = new Code(fileAsByteArray, submittedFIle.getName(), info.id, submitterUsername);
-        code.save();
-    }
-*/
     public static Result addRanking(){
         RankingSubmission rank = Form.form(RankingSubmission.class).bindFromRequest().get();
         Code code = Code.findByName.byId(rank.codename);

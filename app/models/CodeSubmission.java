@@ -12,4 +12,5 @@ public class CodeSubmission {
     public String description;
     public String submitter;
     public String password;
+    public String filename;
 }
