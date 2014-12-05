@@ -2,9 +2,9 @@
     <div class="overlay" style="display:none"></div>
     <div id="sub-container">
         <h2>Code Submission</h2>
-        <form action="@routes.Application.addCode()" method="post">
+        <form action="@routes.Application.addCode()" method="post" class="form-horizontal" enctype="multipart/form-data">
             <label for="inputfile">File:</label>
-            <input id="inputfile" type="file" name="file" required>
+            <input id="inputfile" type="file" class="upload" name="file" required>
             <br/>
             <label for="inputlang">Language:</label>
             <input id = "inputlang" class="form-control" type="text" name="language" placeholder="Type PL" required/>

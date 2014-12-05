@@ -5,7 +5,7 @@
 
 create table Code (
   name                      varchar(255) not null,
-  source                    blob,
+  source                    varbinary(255),
   description_id            integer,
   submitter_id              varchar(255),
   constraint pk_Code primary key (name))
