@@ -1,21 +1,34 @@
 @main("Comment a Code!"){
-    <div>
-        <h2>Comments</h2>
+    <div class="components-container">
+        <h1>Comment a Code</h1>
         <form action="@routes.Application.addRanking()" method="post">
-            <label for="codename">Code name:</label>
-            <input id="codename" type="text" name="codename" placeholder="Type code's name" required>
-            <br/>
-            <label for="opinion_good">Like</label>
-            <input id="opinion_good" type="radio" value="like" name="like">
-            <label for="opinion_bad">Deslike</label>
-            <input id="opinion_bad" type="radio" value="deslike" name="like" checked>
-            <br/>
-            <label for="comment">Comment:</label>
-            <br/>
-            <textarea id = "comment" type="text" name="comment" rows="6" cols="30" maxlength="2000"/>
-            </textarea>
-            <br/>
-            <button>Comment</button>
+            <div class="form-group">
+                <label for="codename">Code's name:</label>
+                <input id="codename" class="form-control" type="text" name="codename" placeholder="Type code's name" required>
+            </div>
+
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                    Like
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>
+                    Dislike
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea id = "comment" class="form-control" type="text" name="comment" rows="6" maxlength="2000" placeholder="Insert your comment here!">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default">Comment</button>
+            </div>
         </form>
     </div>
 }
