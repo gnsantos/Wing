@@ -21,14 +21,14 @@ public class Code extends Model{
     @Id
     public String name;
 
-    @Column(columnDefinition = "BYTEA(22000)")
+    @Column(columnDefinition = "BYTEA")
     public byte[] source;
 
     public int descriptionID;
     public String submitterID;
     public static Model.Finder<String, Code> findByName = new Model.Finder<String , Code>(String.class, Code.class);
 
-    public Code(String name, int descriptionID, String submitter){  
+    public Code(String name, int descriptionID, String submitter){
         this.name = name;
         this.descriptionID = descriptionID;
         this.submitterID = submitter;
