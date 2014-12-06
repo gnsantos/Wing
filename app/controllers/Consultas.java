@@ -30,11 +30,6 @@ public class Consultas extends Controller {
     public static Result searchCodesByDescription(){
         Search search = Form.form(Search.class).bindFromRequest().get();
 
-        System.out.println("foo2");
-        System.out.println(search);
-        System.out.println("foo1");
-
-
         List<Code> codes = Code.findByName.all();
         List<Code> results = new LinkedList<Code>();
 
