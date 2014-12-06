@@ -48,7 +48,8 @@ public class FileHandlers extends Controller {
             return ok(index.render("InvalidFileError"));
         }
 
-        Code code = new Code(submittedFile, filename, info.id, submitterUsername);
+        Code code = new Code(filename, info.id, submitterUsername);
+        code.initSource(submittedFile);
         info.save();
         code.save();
 
@@ -58,7 +59,6 @@ public class FileHandlers extends Controller {
 
     public static Result downloadFile(String filename){
         Code download = Code.findByName.byId(filename);
-        System.out.println("Quero baixar "+download);
         String filePath;
 
         if(download == null){

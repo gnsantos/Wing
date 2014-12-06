@@ -28,10 +28,13 @@ public class Code extends Model{
     public String submitterID;
     public static Model.Finder<String, Code> findByName = new Model.Finder<String , Code>(String.class, Code.class);
 
-    public Code(File file, String name, int descriptionID, String submitter){
+    public Code(String name, int descriptionID, String submitter){
         this.name = name;
         this.descriptionID = descriptionID;
         this.submitterID = submitter;
+    }
+
+    public void initSource(File file){
         this.source = fileToByteArray(file);
     }
 
@@ -56,9 +59,9 @@ public class Code extends Model{
     }
 
 
-    private byte[] fileToByteArray(File file){
+    private static byte[] fileToByteArray(File file){
         FileInputStream fileInputStream = null;
-        source = new byte[(int) file.length()];
+        byte[] source = new byte[(int) file.length()];
         try{
             fileInputStream = new FileInputStream(file);
             fileInputStream.read(source);
@@ -71,12 +74,4 @@ public class Code extends Model{
         return source;
     }
 
-
-    public int compareTo(Code c){
-        int score = this.nota();
-        int comparingScore = c.nota();
-        if(score > comparingScore) return 1;
-        else if(score < comparingScore) return -1;
-        return 0;
-    }
 }
