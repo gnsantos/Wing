@@ -26,11 +26,11 @@ create table Ranking (
   constraint pk_Ranking primary key (id))
 ;
 
-create table User (
+create table Users (
   username                  varchar(255) not null,
   email                     varchar(255),
   password                  varchar(255),
-  constraint pk_User primary key (username))
+  constraint pk_Users primary key (username))
 ;
 
 create sequence Code_seq;
@@ -39,7 +39,7 @@ create sequence Description_seq;
 
 create sequence Ranking_seq;
 
-create sequence User_seq;
+create sequence Users_seq;
 
 
 
@@ -54,7 +54,7 @@ drop table if exists Description;
 
 drop table if exists Ranking;
 
-drop table if exists User;
+drop table if exists Users;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
@@ -64,5 +64,5 @@ drop sequence if exists Description_seq;
 
 drop sequence if exists Ranking_seq;
 
-drop sequence if exists User_seq;
+drop sequence if exists Users_seq;
 

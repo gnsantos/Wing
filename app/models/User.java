@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class User extends Model {
 
     @Id
