@@ -21,7 +21,7 @@ public class Code extends Model{
     @Id
     public String name;
 
-    @Column(columnDefinition = "VARBINARY(20000)")
+    @Column(columnDefinition = "BYTEA(20000)")
     public byte[] source;
 
     public int descriptionID;
